@@ -3,16 +3,14 @@
 
 #include <stdio.h>
 #include <math.h>
-#include <assert.h>
 
 #define pi 3.14
 #define r2pi sqrt(2*pi)
+const int numThreadsPerBlock = 1024;
 
 using namespace std;
 
-const int numThreadsPerBlock = 1024;
-
-static void HandleError( cudaError_t err,                         const char *file,                         int line ) {
+static void HandleError( cudaError_t err, const char *file, int line ) {
     if (err != cudaSuccess) {
         printf( "%s in %s at line %d\n", cudaGetErrorString( err ),
                 file, line );
@@ -35,13 +33,12 @@ float seq_fhx(std::vector<float> x, int n, float h){
             float k = fhx_const * exponent;
             temp += k;          
         }
-        //cout<<temp<<" ";
         sum += temp;        //each temp is a y_i
     }
-    //cout<<endl;
     return sum;
 }
 */
+
 __global__ void fhx (const float* gin, float* gout, float val, int n, float h) {
 
     float fhx_const = 1/(n*h*r2pi);
