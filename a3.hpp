@@ -1,8 +1,3 @@
-/*  Sabareesh
- *  Meenakshisundaram Balasubramanian
- *  smeenaks
- */
-
 #ifndef A3_HPP
 #define A3_HPP
 
